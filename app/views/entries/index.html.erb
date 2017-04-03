@@ -1,0 +1,39 @@
+<h1>Listing entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Bracket group</th>
+      <th>Starting lane</th>
+      <th>Entry count</th>
+      <th>Paid</th>
+      <th>Rejected count</th>
+      <th>Refunded</th>
+      <th>Average</th>
+      <th>Bowler</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @entries.each do |entry| %>
+      <tr>
+        <td><%= entry.bracket_group %></td>
+        <td><%= entry.starting_lane %></td>
+        <td><%= entry.entry_count %></td>
+        <td><%= entry.paid %></td>
+        <td><%= entry.rejected_count %></td>
+        <td><%= entry.refunded %></td>
+        <td><%= entry.average %></td>
+        <td><%= entry.bowler %></td>
+        <td><%= link_to 'Show', entry %></td>
+        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
+        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Entry', new_entry_path %>

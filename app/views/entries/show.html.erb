@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bracket group:</strong>
+  <%= @entry.bracket_group %>
+</p>
+
+<p>
+  <strong>Starting lane:</strong>
+  <%= @entry.starting_lane %>
+</p>
+
+<p>
+  <strong>Entry count:</strong>
+  <%= @entry.entry_count %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @entry.paid %>
+</p>
+
+<p>
+  <strong>Rejected count:</strong>
+  <%= @entry.rejected_count %>
+</p>
+
+<p>
+  <strong>Refunded:</strong>
+  <%= @entry.refunded %>
+</p>
+
+<p>
+  <strong>Average:</strong>
+  <%= @entry.average %>
+</p>
+
+<p>
+  <strong>Bowler:</strong>
+  <%= @entry.bowler %>
+</p>
+
+<%= link_to 'Edit', edit_entry_path(@entry) %> |
+<%= link_to 'Back', entries_path %>
