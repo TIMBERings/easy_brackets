@@ -1,44 +1,34 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Entry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Entry %></h1>
+</div>
 
-<p>
-  <strong>Bracket group:</strong>
-  <%= @entry.bracket_group %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:starting_lane) %></dt>
+      <dd><pre class="prettyprint"><%= @entry.starting_lane %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:entry_count) %></dt>
+      <dd><pre class="prettyprint"><%= @entry.entry_count %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:paid) %></dt>
+      <dd><pre class="prettyprint"><%= @entry.paid %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:rejected_count) %></dt>
+      <dd><pre class="prettyprint"><%= @entry.rejected_count %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:refunded) %></dt>
+      <dd><pre class="prettyprint"><%= @entry.refunded %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:average) %></dt>
+      <dd><pre class="prettyprint"><%= @entry.average %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Starting lane:</strong>
-  <%= @entry.starting_lane %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              entries_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_entry_path(@entry), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              entry_path(@entry),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Entry count:</strong>
-  <%= @entry.entry_count %>
-</p>
-
-<p>
-  <strong>Paid:</strong>
-  <%= @entry.paid %>
-</p>
-
-<p>
-  <strong>Rejected count:</strong>
-  <%= @entry.rejected_count %>
-</p>
-
-<p>
-  <strong>Refunded:</strong>
-  <%= @entry.refunded %>
-</p>
-
-<p>
-  <strong>Average:</strong>
-  <%= @entry.average %>
-</p>
-
-<p>
-  <strong>Bowler:</strong>
-  <%= @entry.bowler %>
-</p>
-
-<%= link_to 'Edit', edit_entry_path(@entry) %> |
-<%= link_to 'Back', entries_path %>

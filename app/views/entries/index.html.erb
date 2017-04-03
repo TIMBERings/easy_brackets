@@ -1,39 +1,46 @@
-<h1>Listing entries</h1>
-
-<table>
+<%- model_class = Entry -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Entry %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Bracket group</th>
-      <th>Starting lane</th>
-      <th>Entry count</th>
-      <th>Paid</th>
-      <th>Rejected count</th>
-      <th>Refunded</th>
-      <th>Average</th>
-      <th>Bowler</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:starting_lane) %></th>
+      <th><%= model_class.human_attribute_name(:entry_count) %></th>
+      <th><%= model_class.human_attribute_name(:paid) %></th>
+      <th><%= model_class.human_attribute_name(:rejected_count) %></th>
+      <th><%= model_class.human_attribute_name(:refunded) %></th>
+      <th><%= model_class.human_attribute_name(:average) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @entries.each do |entry| %>
       <tr>
-        <td><%= entry.bracket_group %></td>
+        <td><%= entry.id %></td>
         <td><%= entry.starting_lane %></td>
         <td><%= entry.entry_count %></td>
         <td><%= entry.paid %></td>
         <td><%= entry.rejected_count %></td>
         <td><%= entry.refunded %></td>
         <td><%= entry.average %></td>
-        <td><%= entry.bowler %></td>
-        <td><%= link_to 'Show', entry %></td>
-        <td><%= link_to 'Edit', edit_entry_path(entry) %></td>
-        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l entry.created_at, format: :long %></td>
+        <td>
+          <%= link_to entry_path(entry), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to entry_path(entry), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Entry', new_entry_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_entry_path,
+            :class => 'btn btn-primary' %>
