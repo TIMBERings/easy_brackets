@@ -1,9 +1,24 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Bowler -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Bowler %></h1>
+</div>
 
-<p>
-  <strong>Starting lane:</strong>
-  <%= @bowler.starting_lane %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:starting_lane) %></dt>
+      <dd><pre class="prettyprint"><%= @bowler.starting_lane %></pre></dd>
+  </dl>
+</div>
 
-<%= link_to 'Edit', edit_bowler_path(@bowler) %> |
-<%= link_to 'Back', bowlers_path %>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              bowlers_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_bowler_path(@bowler), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              bowler_path(@bowler),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
+

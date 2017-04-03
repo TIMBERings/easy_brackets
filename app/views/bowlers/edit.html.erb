@@ -1,6 +1,5 @@
-<h1>Editing bowler</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @bowler %> |
-<%= link_to 'Back', bowlers_path %>
+<%- model_class = Bowler -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Bowler %></h1>
+</div>
+<%= render :partial => 'form' %>
