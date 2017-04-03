@@ -1,0 +1,17 @@
+<%= simple_form_for(@event) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :date %>
+    <%= f.input :winner_cut %>
+    <%= f.input :runner_up_cut %>
+    <%= f.input :organizer_cut %>
+    <%= f.input :entry_cost %>
+    <%= f.association :user %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
