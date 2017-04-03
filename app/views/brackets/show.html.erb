@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Bracket group:</strong>
+  <%= @bracket.bracket_group %>
+</p>
+
+<p>
+  <strong>Seeds:</strong>
+  <%= @bracket.seeds %>
+</p>
+
+<p>
+  <strong>Results:</strong>
+  <%= @bracket.results %>
+</p>
+
+<%= link_to 'Edit', edit_bracket_path(@bracket) %> |
+<%= link_to 'Back', brackets_path %>
