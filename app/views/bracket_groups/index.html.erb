@@ -1,0 +1,27 @@
+<h1>Listing bracket_groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Event</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bracket_groups.each do |bracket_group| %>
+      <tr>
+        <td><%= bracket_group.name %></td>
+        <td><%= bracket_group.event %></td>
+        <td><%= link_to 'Show', bracket_group %></td>
+        <td><%= link_to 'Edit', edit_bracket_group_path(bracket_group) %></td>
+        <td><%= link_to 'Destroy', bracket_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Bracket group', new_bracket_group_path %>

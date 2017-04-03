@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @bracket_group.name %>
+</p>
+
+<p>
+  <strong>Event:</strong>
+  <%= @bracket_group.event %>
+</p>
+
+<%= link_to 'Edit', edit_bracket_group_path(@bracket_group) %> |
+<%= link_to 'Back', bracket_groups_path %>

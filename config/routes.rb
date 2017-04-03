@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :bracket_groups
+
   resources :brackets
 
   resources :bowlers
