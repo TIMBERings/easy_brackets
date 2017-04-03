@@ -1,17 +1,46 @@
-<%= simple_form_for(@event) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :date %>
-    <%= f.input :winner_cut %>
-    <%= f.input :runner_up_cut %>
-    <%= f.input :organizer_cut %>
-    <%= f.input :entry_cost %>
-    <%= f.association :user %>
+<%= form_for @event, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :date, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.date_select :date, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :winner_cut, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :winner_cut, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :runner_up_cut, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :runner_up_cut, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :organizer_cut, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :organizer_cut, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :entry_cost, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :entry_cost, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  events_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>
