@@ -1,4 +1,5 @@
 ActiveAdmin.register Event do
+  permit_params :name, :date, :winner_cut, :runner_up_cut, :organizer_cut, :entry_cost
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
