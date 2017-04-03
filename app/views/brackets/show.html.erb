@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Bracket -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Bracket %></h1>
+</div>
 
-<p>
-  <strong>Bracket group:</strong>
-  <%= @bracket.bracket_group %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:seeds) %></dt>
+      <dd><pre class="prettyprint"><%= @bracket.seeds %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:results) %></dt>
+      <dd><pre class="prettyprint"><%= @bracket.results %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Seeds:</strong>
-  <%= @bracket.seeds %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              brackets_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_bracket_path(@bracket), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              bracket_path(@bracket),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Results:</strong>
-  <%= @bracket.results %>
-</p>
-
-<%= link_to 'Edit', edit_bracket_path(@bracket) %> |
-<%= link_to 'Back', brackets_path %>

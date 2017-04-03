@@ -1,29 +1,38 @@
-<h1>Listing brackets</h1>
-
-<table>
+<%- model_class = Bracket -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Bracket %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Bracket group</th>
-      <th>Seeds</th>
-      <th>Results</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:seeds) %></th>
+      <th><%= model_class.human_attribute_name(:results) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @brackets.each do |bracket| %>
       <tr>
-        <td><%= bracket.bracket_group %></td>
+        <td><%= bracket.id %></td>
         <td><%= bracket.seeds %></td>
         <td><%= bracket.results %></td>
-        <td><%= link_to 'Show', bracket %></td>
-        <td><%= link_to 'Edit', edit_bracket_path(bracket) %></td>
-        <td><%= link_to 'Destroy', bracket, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l bracket.created_at, format: :long %></td>
+        <td>
+          <%= link_to bracket_path(bracket), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to bracket_path(bracket), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Bracket', new_bracket_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_bracket_path,
+            :class => 'btn btn-primary' %>

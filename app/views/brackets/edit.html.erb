@@ -1,6 +1,5 @@
-<h1>Editing bracket</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @bracket %> |
-<%= link_to 'Back', brackets_path %>
+<%- model_class = Bracket -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Bracket %></h1>
+</div>
+<%= render :partial => 'form' %>
